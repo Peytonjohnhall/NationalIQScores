@@ -5,3 +5,7 @@ The data is accessible via the following URL: https://www.kaggle.com/datasets/ml
 Data Manipulation:
 
 - Changed character vector/string value from "Türkiye" to "Turkey" for compatibility with "joinCountryData2Map" function from the "rworldmap" package (row 76, column 2).
+
+- Changed character vector/string value from "Congo" to "Democratic Republic of the Congo" for compatibility with "joinCountryData2Map" function from the "rworldmap" package (row 173, column 2).
+
+- Changed character vector/string value from "Congo Republic" to "Republic of the Congo" for compatibility with "joinCountryData2Map" function from the "rworldmap" package (row 177, column 2).
