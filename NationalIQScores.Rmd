@@ -30,20 +30,6 @@ avgIQpercountry
 ```
 
 
-Check Contents in the rworldmap Package
-```{r Check Contents in the rworldmap Package}
-# Get the map data
-worldMap <- getMap()
-
-# Extract the country names
-countryNames <- worldMap$NAME
-
-# Print the list of country names
-print(countryNames)
-```
-There are 243 total country names in the rworldmap package.
-
-
 Define Global Variables
 ```{r Define Global Variables}
 # Save the value of the column header "Average IQ" to the variable Average_IQ
