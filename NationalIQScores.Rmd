@@ -30,8 +30,6 @@ avgIQpercountry
 ```
 
 
-
-
 Let μ = Average National IQ, AF = Africa, AS = Asia, CA = Central America, 
 EU = Europe, EA = Eurasia, NA = North America, OC = Oceania, SA = South America
 
@@ -74,8 +72,6 @@ Pairwise comparison determinations are based upon the "p adj" column.
 If p adj < 0.05, there is a significant difference. 
 If p adj > 0.05, there is no significant difference.
 That is not to say there are no smaller differences.
-
-
 
 
 Define Global Variables for Graphing
@@ -140,8 +136,6 @@ iq_labels <- function(Average_IQ) {
 
 iq_breaks <- c(-Inf, 50, 60, 70, 80, 90, 100, Inf) # Define the breaks
 ```
-
-
 
 
 Global Map of Average IQ per Country
@@ -538,8 +532,12 @@ ggplot(oceanian_data, aes(x = reorder(Country, `Average IQ`), y = `Average IQ`,
         legend.position = "right")
 ```
 
+
 $H_0: \mu_\text{Muslim IQ} = \mu_\text{Non-Muslim IQ}$ vs $H_a: \mu_\text{Muslim IQ} \ne \mu_\text{Non-Muslim IQ}$
-```{r}
+
+
+Hypothesis Testing 2
+```{r Hypothesis Testing 2}
 muslim_nonmuslim <- avgIQpercountry %>% 
   filter(Country %in% c("United States", "Israel", "Palestine", "Syria", 
                         "Jordan", "Egypt", "Lebanon", "Iraq"))
@@ -607,6 +605,38 @@ ggplot(selected_countries_data, aes(x = Country, y = `Average IQ`,
   scale_y_continuous(breaks = seq(0, 100, by = 10)) + # y-axis ticks
   facet_wrap(~ Category, scales = "free_x") # Split graph into two categories
 ```
+
+
+$H_0: \mu_\text{Allied With Russia IQ} = \mu_\text{NATO IQ}$ vs $H_a: \mu_\text{Allied With Russia IQ} \ne \mu_\text{NATO IQ IQ}$
+
+
+Hypothesis Testing 3
+```{r Hypothesis Testing 3}
+# Create the dataset and assign groups
+NATO_nonNATO <- avgIQpercountry %>%
+  filter(Country %in% c("Russia", "Syria", "Belarus", "Ukraine", "United States", 
+                        "United Kingdom", "Germany", "France", "Poland", 
+                        "Canada", "Turkey", "Estonia", "Latvia", "Lithuania",
+                        "Moldova", "Hungary", "Slovakia")) %>%
+  mutate(Group = ifelse(Country %in% c("Russia", "Belarus", "Syria"), 
+                        "Allied With Russia", 
+                        "NATO"))
+
+# Perform a One-Way Analysis of Variance (ANOVA)
+abab_israeli2 <- aov(`Average IQ`~Group, data = NATO_nonNATO)
+summary(abab_israeli2)
+TukeyHSD(abab_israeli2) # pairwise comparison test
+```
+f = 1.786; p-value = 0.203
+
+Fail to reject H0; there is no evidence to support the claim that the mean IQs 
+between these NATO and Non-NATO countries are different at the 0.05 significance 
+level.
+
+In the pairwise comparison test, it is found that NATO and Non-NATO countries 
+are not significantly different in average IQ scores. This is denoted by the 
+high probability value (i.e. 0.2027295) in the "p adj" column. Viz., the 
+probability this pair is equivalent is 20.27%.
 
 
 Compare IQ in Countries Involved in Russo-Ukrainian War
