@@ -623,9 +623,9 @@ NATO_nonNATO <- avgIQpercountry %>%
                         "NATO"))
 
 # Perform a One-Way Analysis of Variance (ANOVA)
-abab_israeli2 <- aov(`Average IQ`~Group, data = NATO_nonNATO)
-summary(abab_israeli2)
-TukeyHSD(abab_israeli2) # pairwise comparison test
+abab_israeli3 <- aov(`Average IQ`~Group, data = NATO_nonNATO)
+summary(abab_israeli3)
+TukeyHSD(abab_israeli3) # pairwise comparison test
 ```
 f = 1.786; p-value = 0.203
 
