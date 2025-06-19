@@ -607,7 +607,7 @@ ggplot(selected_countries_data, aes(x = Country, y = `Average IQ`,
 ```
 
 
-$H_0: \mu_\text{Allied With Russia IQ} = \mu_\text{NATO IQ}$ vs $H_a: \mu_\text{Allied With Russia IQ} \ne \mu_\text{NATO IQ IQ}$
+$H_0: \mu_\text{Allied With Russia IQ} = \mu_\text{NATO IQ}$ vs $H_a: \mu_\text{Allied With Russia IQ} \ne \mu_\text{NATO IQ}$
 
 
 Hypothesis Testing 3
